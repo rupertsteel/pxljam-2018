@@ -6,6 +6,7 @@ set(gbdkDir C:/Users/rupert/dev/pxljam2018/gbdk/bin)
 find_program(gbdkLcc lcc PATHS ${gbdkDir})
 set(CMAKE_C_COMPILER ${gbdkLcc})
 set(CMAKE_AR ${gbdkLcc} CACHE FILEPATH "Archiver")
+SET(CMAKE_EXE_LINKER_FLAGS "-Wl-yp0x143=0x80")
 SET(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> -o <TARGET> <LINK_FLAGS> <OBJECTS>")
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
