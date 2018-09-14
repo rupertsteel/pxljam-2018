@@ -2,7 +2,7 @@
 set(CMAKE_SYSTEM_NAME gbc)
 set(CMAKE_SYSTEM_PROCESSOR lr2)
 
-set(gbdkDir C:/gbdk/bin)
+set(gbdkDir C:/Users/rupert/dev/pxljam2018/gbdk/bin)
 find_program(gbdkLcc lcc PATHS ${gbdkDir})
 set(CMAKE_C_COMPILER ${gbdkLcc})
 set(CMAKE_AR ${gbdkLcc} CACHE FILEPATH "Archiver")
