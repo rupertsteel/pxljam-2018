@@ -3,3 +3,7 @@ game/ReleaseColor/
 game/Release/
 game/Debug/
 game/DebugColor/
+*.o
+*.asm
+*.lst
+*.sym

@@ -3,6 +3,7 @@
 
 #define STATES \
 _STATE(STATE_GAME)\
+_STATE(STATE_MENU)\
 STATE_DEF_END
 
 #define SPRITES \

@@ -12,9 +12,9 @@
   Tile size            : 8 x 8
   Tiles                : 0 to 44
 
-  Palette colors       : None.
+  Palette colors       : Included.
   SGB Palette          : None.
-  CGB Palette          : None.
+  CGB Palette          : 1 Byte per entry.
 
   Convert to metatiles : No.
 
@@ -25,6 +25,80 @@
 
 /* Bank of tiles. */
 #define fontBank 0
+
+/* Super Gameboy palette 0 */
+#define fontSGBPal0c0 6076
+#define fontSGBPal0c1 8935
+#define fontSGBPal0c2 6596
+#define fontSGBPal0c3 5344
+
+/* Super Gameboy palette 1 */
+#define fontSGBPal1c0 6076
+#define fontSGBPal1c1 8935
+#define fontSGBPal1c2 6596
+#define fontSGBPal1c3 5344
+
+/* Super Gameboy palette 2 */
+#define fontSGBPal2c0 6076
+#define fontSGBPal2c1 8935
+#define fontSGBPal2c2 6596
+#define fontSGBPal2c3 5344
+
+/* Super Gameboy palette 3 */
+#define fontSGBPal3c0 6076
+#define fontSGBPal3c1 8935
+#define fontSGBPal3c2 6596
+#define fontSGBPal3c3 5344
+
+/* Gameboy Color palette 0 */
+#define fontCGBPal0c0 6076
+#define fontCGBPal0c1 8935
+#define fontCGBPal0c2 6596
+#define fontCGBPal0c3 5344
+
+/* Gameboy Color palette 1 */
+#define fontCGBPal1c0 6076
+#define fontCGBPal1c1 8935
+#define fontCGBPal1c2 6596
+#define fontCGBPal1c3 5344
+
+/* Gameboy Color palette 2 */
+#define fontCGBPal2c0 6076
+#define fontCGBPal2c1 8935
+#define fontCGBPal2c2 6596
+#define fontCGBPal2c3 5344
+
+/* Gameboy Color palette 3 */
+#define fontCGBPal3c0 6076
+#define fontCGBPal3c1 8935
+#define fontCGBPal3c2 6596
+#define fontCGBPal3c3 5344
+
+/* Gameboy Color palette 4 */
+#define fontCGBPal4c0 6076
+#define fontCGBPal4c1 8935
+#define fontCGBPal4c2 6596
+#define fontCGBPal4c3 5344
+
+/* Gameboy Color palette 5 */
+#define fontCGBPal5c0 6076
+#define fontCGBPal5c1 8935
+#define fontCGBPal5c2 6596
+#define fontCGBPal5c3 5344
+
+/* Gameboy Color palette 6 */
+#define fontCGBPal6c0 6076
+#define fontCGBPal6c1 8935
+#define fontCGBPal6c2 6596
+#define fontCGBPal6c3 5344
+
+/* Gameboy Color palette 7 */
+#define fontCGBPal7c0 6076
+#define fontCGBPal7c1 8935
+#define fontCGBPal7c2 6596
+#define fontCGBPal7c3 5344
+/* CGBpalette entries. */
+extern unsigned char fontCGB[];
 /* Start of tile array. */
 extern unsigned char font[];
 
