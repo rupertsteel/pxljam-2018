@@ -9,23 +9,27 @@ const UINT8 anim_idle[] = {1, 0};
 const UINT8 anim_walk[] = {2, 1, 2};
 
 void Start_SPRITE_PLAYER() {
+    THIS->coll_x = 2;
+    THIS->coll_y = 0;
+    THIS->coll_w = 12;
+    THIS->coll_h = 16;
 }
 
 void Update_SPRITE_PLAYER() {
     if (KEY_PRESSED(J_UP)) {
-        THIS->y--;
+        TranslateSprite(THIS, 0, -1);
         SetSpriteAnim(THIS, anim_walk, 15);
     }
     if (KEY_PRESSED(J_DOWN)) {
-        THIS->y++;
+        TranslateSprite(THIS, 0, 1);
         SetSpriteAnim(THIS, anim_walk, 15);
     }
     if (KEY_PRESSED(J_LEFT)) {
-        THIS->x--;
+        TranslateSprite(THIS, -1, 0);
         SetSpriteAnim(THIS, anim_walk, 15);
     }
     if (KEY_PRESSED(J_RIGHT)) {
-        THIS->x++;
+        TranslateSprite(THIS, 1, 0);
         SetSpriteAnim(THIS, anim_walk, 15);
     }
     if (keys == 0) {
