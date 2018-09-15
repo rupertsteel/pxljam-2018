@@ -32,8 +32,20 @@ static const UINT8 collision_tiles[] = {1, 2, 3, 0};
 
 UINT8 i = 0;
 
+UINT16 currentMapWidth = 0;
+UINT16 currentMapHeight = 0;
+UINT8 currentMapBank = 0;
+unsigned char* currentMapPLN0 = 0;
+unsigned char* currentMapPLN1 = 0;
+
 void Start_STATE_GAME() {
 	UINT8 i;
+
+	currentMapWidth = mapWidth;
+	currentMapHeight = mapHeight;
+	currentMapBank = 3;
+	currentMapPLN0 = mapPLN0;
+	currentMapPLN1 = mapPLN1;
 
 	SetPalette(BG_PALETTE, 0, 8, bg_palette, bank_STATE_GAME);
 	SetPalette(SPRITES_PALETTE, 0, 8, sprites_palette, bank_STATE_GAME);

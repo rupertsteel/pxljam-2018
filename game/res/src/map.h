@@ -9,8 +9,8 @@
    Bank          : 0
    Map size      : 40 x 18
    Tile set      : tiles.gbr
-   Plane count   : 1 plane (8 bits)
-   Plane order   : Tiles are continues
+   Plane count   : 2 planes (16 bits)
+   Plane order   : Planes are continues
    Tile offset   : 0
    Split data    : No
 
@@ -22,6 +22,8 @@
 #define mapHeight 18
 #define mapBank 0
 
-extern unsigned char map[];
+#define map mapPLN0
+extern unsigned char mapPLN0[];
+extern unsigned char mapPLN1[];
 
 /* End of MAP.H */
