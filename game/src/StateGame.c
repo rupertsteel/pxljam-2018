@@ -73,6 +73,20 @@ void Start_STATE_GAME() {
 }
 
 void Update_STATE_GAME() {
+	UINT8 i;
+	struct Sprite* spr;
+
 	PRINT_POS(0, 1);
 	Printf("%d out of %d      ", (UINT16)(i++),1);
+
+	// DEBUG ZONE
+	/*SPRITEMANAGER_ITERATE(i, spr) {
+		if (spr->type == SPRITE_DOOR) {
+			struct DoorInfo* data;
+			data = (struct DoorInfo*)THIS->custom_data;
+			PRINT_POS(1, 1);
+			Printf("Door target %d", data->target);
+			//Printf("Door (x y) ")
+		}
+	}*/
 }
