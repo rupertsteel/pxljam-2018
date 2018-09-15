@@ -3,7 +3,7 @@
 UINT8 bank_STATE_GAME_LASER = 2;
 
 #include "../res/src/tiles.h"
-#include "../res/src/map.h"
+#include "../res/src/laser1.h"
 #include "../res/src/player.h"
 
 #include "ZGBMain.h"
@@ -31,7 +31,7 @@ void Start_STATE_GAME_LASER() {
 	scroll_target = SpriteManagerAdd(SPRITE_PLAYER, 50, 50);
 
 	InitScrollTilesColor(0, 8, tiles, 3);
-	InitScroll(mapWidth, mapHeight, map, collision_tiles, 0, 3);
+	InitScroll(mapLaser1Width, mapLaser1Height, mapLaser1, collision_tiles, 0, 3);
 	SHOW_BKG;
 }
 
