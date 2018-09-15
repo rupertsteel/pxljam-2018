@@ -16,8 +16,6 @@ UINT8 bank_STATE_MENU = 2;
 const UINT16 bg_palette_2[] = {PALETTE_FROM_HEADER(font)};
 UINT8 collision_tiles_2[] = {1, 0};
 void Start_STATE_MENU() {
-	UINT8 i;
-
 	SetPalette(BG_PALETTE, 0, 8, bg_palette_2, bank_STATE_MENU);
 
 	InitScrollTilesColor(0, 48, font, 3);
