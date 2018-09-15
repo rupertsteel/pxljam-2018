@@ -11,10 +11,10 @@ UINT8 bank_STATE_GAME_LASER = 2;
 #include "SpriteManager.h"
 #include "Palette.h"
 
-const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
-UINT16 sprites_palette[] = {PALETTE_FROM_HEADER(player)};
+static const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
+static const UINT16 sprites_palette[] = {PALETTE_FROM_HEADER(player)};
 
-UINT8 collision_tiles[] = {1, 2, 3, 0};
+static const UINT8 collision_tiles[] = {1, 2, 3, 0};
 
 void Start_STATE_GAME_LASER() {
 	UINT8 i;

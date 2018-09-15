@@ -5,16 +5,27 @@ UINT8 bank_STATE_GAME = 2;
 #include "../res/src/tiles.h"
 #include "../res/src/map.h"
 #include "../res/src/player.h"
+#include "../res/src/door.h"
 
 #include "ZGBMain.h"
 #include "Scroll.h"
 #include "SpriteManager.h"
 #include "Palette.h"
 
-const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
-UINT16 sprites_palette[] = {PALETTE_FROM_HEADER(player)};
+static const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
 
-UINT8 collision_tiles[] = {1, 2, 3, 0};
+static const UINT16 sprites_palette[] = {
+	PALETTE_INDEX(player, 0),
+	PALETTE_INDEX(player, 1),
+	PALETTE_INDEX(door,  2),
+	PALETTE_INDEX(player, 3),
+	PALETTE_INDEX(player, 4),
+	PALETTE_INDEX(player, 5),
+	PALETTE_INDEX(player, 6),
+	PALETTE_INDEX(player, 7),
+};
+
+static const UINT8 collision_tiles[] = {1, 2, 3, 0};
 
 void Start_STATE_GAME() {
 	UINT8 i;
