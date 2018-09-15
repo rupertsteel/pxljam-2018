@@ -1,1 +1,5 @@
-build/
+game/bin/
+game/ReleaseColor/
+game/Release/
+game/Debug/
+game/DebugColor/
