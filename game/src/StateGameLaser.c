@@ -15,6 +15,7 @@ UINT8 bank_STATE_GAME_LASER = 2;
 #include "Palette.h"
 #include "Print.h"
 #include "Frame.h"
+#include "Keys.h"
 
 #include "MapCommon.h"
 #include "SpriteLaser.h"
@@ -38,6 +39,11 @@ static struct Sprite* laserFl;
 static struct Sprite* laserFu;
 static struct Sprite* laserFr;
 static struct Sprite* laserFd;
+
+static struct Sprite* leftSlot;
+static struct Sprite* upSlot;
+static struct Sprite* rightSlot;
+static struct Sprite* downSlot;
 
 void Start_STATE_GAME_LASER() {
 	UINT8 i;
@@ -66,6 +72,7 @@ void Start_STATE_GAME_LASER() {
 	{
 		struct LaserInfo* info;
 		laserFl = SpriteManagerAdd(SPRITE_LASER, 100, 50);
+		rightSlot = laserFl;
 		info = (struct LaserInfo*)laserFl->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 0;
@@ -74,6 +81,7 @@ void Start_STATE_GAME_LASER() {
 	{
 		struct LaserInfo* info;
 		laserFu = SpriteManagerAdd(SPRITE_LASER, 92, 58);
+		downSlot = laserFu;
 		info = (struct LaserInfo*)laserFu->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 1;
@@ -82,6 +90,7 @@ void Start_STATE_GAME_LASER() {
 	{
 		struct LaserInfo* info;
 		laserFr = SpriteManagerAdd(SPRITE_LASER, 84, 50);
+		leftSlot = laserFr;
 		info = (struct LaserInfo*)laserFr->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 2;
@@ -90,6 +99,7 @@ void Start_STATE_GAME_LASER() {
 	{
 		struct LaserInfo* info;
 		laserFd = SpriteManagerAdd(SPRITE_LASER, 92, 42);
+		upSlot = laserFd;
 		info = (struct LaserInfo*)laserFd->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 3;
@@ -101,6 +111,47 @@ void Start_STATE_GAME_LASER() {
 	SHOW_BKG;
 }
 
-void Update_STATE_GAME_LASER() {
+static void swap_lasers(struct Sprite** a, struct Sprite** b) {
+	struct Sprite* tmp = *a;
+	UINT16 tempLoc;
 
+	*a = *b;
+	*b = tmp;
+
+	tempLoc = (*a)->x;
+	(*a)->x = (*b)->x;
+	(*b)->x = tempLoc;
+
+	tempLoc = (*a)->y;
+	(*a)->y = (*b)->y;
+	(*b)->y = tempLoc;
+}
+
+void Update_STATE_GAME_LASER() {
+	UINT8 controllerControl = 0;
+
+	if (controllerControl) {
+		if (KEY_PRESSED(J_LEFT)) {
+			swap_lasers(&leftSlot, &downSlot);
+			swap_lasers(&downSlot, &rightSlot);
+		} else if (KEY_PRESSED(J_RIGHT)) {
+			swap_lasers(&leftSlot, &downSlot);
+			swap_lasers(&downSlot, &rightSlot);
+		} else if (KEY_PRESSED(J_UP)) {
+			swap_lasers(&leftSlot, &upSlot);
+			swap_lasers(&leftSlot, &downSlot);
+		} else if (KEY_PRESSED(J_DOWN)) {
+			swap_lasers(&leftSlot, &downSlot);
+			swap_lasers(&leftSlot, &upSlot);
+		}
+	}
+
+	if (leftSlot == laserFr
+		&& upSlot == laserFd
+		&& rightSlot == laserFl
+		&& downSlot == laserFu) {
+		// puzzle completed, show the door
+
+
+	}
 }
