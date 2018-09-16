@@ -7,13 +7,14 @@ UINT8 bank_SPRITE_PLAYER = 2;
 #include "ZGBMain.h"
 #include "Print.h"
 #include "SpritePlayer.h"
+#include "MapCommon.h"
 
 const UINT8 anim_idle[] = {1, 0};
 const UINT8 anim_walk[] = {2, 1, 2};
 
 void Start_SPRITE_PLAYER() {
     struct PlayerInfo* info = (struct PlayerInfo*)THIS->custom_data;
-    info->laser = 0;
+    info->controller = 0;
     info->hasControl = 1;
     info->near = 0;
     THIS->coll_x = 2;
@@ -25,6 +26,8 @@ void Start_SPRITE_PLAYER() {
 void Update_SPRITE_PLAYER() {
     INT8 x = 0;
     INT8 y = 0;
+    UINT16 tileX;
+    UINT16 tileY;
     UINT8 i;
     struct Sprite* spr;
     struct Sprite tmp;
@@ -71,7 +74,9 @@ void Update_SPRITE_PLAYER() {
                     // PRINT_POS(0, 1); MEMES are great
                     Printf("Press A to use ");
                     info->near = 1;
-                    info->laser = (UINT8)spr;
+                    tileX = spr->x >> 3;
+                    tileY = (spr->y >> 3) + 1;
+                    info->controller = getDataFromMap(tileX, tileY, 1);;
                     return;
                 }
             }

@@ -51,8 +51,8 @@
 #define fontSGBPal3c3 5344
 
 /* Gameboy Color palette 0 */
-#define fontCGBPal0c0 6076
-#define fontCGBPal0c1 8935
+#define fontCGBPal0c0 32767
+#define fontCGBPal0c1 0
 #define fontCGBPal0c2 6596
 #define fontCGBPal0c3 5344
 
