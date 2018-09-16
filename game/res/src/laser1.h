@@ -9,8 +9,8 @@
    Bank          : 0
    Map size      : 40 x 18
    Tile set      : tiles.gbr
-   Plane count   : 1 plane (8 bits)
-   Plane order   : Tiles are continues
+   Plane count   : 2 planes (16 bits)
+   Plane order   : Planes are continues
    Tile offset   : 0
    Split data    : No
 
@@ -22,6 +22,8 @@
 #define mapLaser1Height 18
 #define mapLaser1Bank 0
 
-extern unsigned char mapLaser1[];
+#define mapLaser1 mapLaser1PLN0
+extern unsigned char mapLaser1PLN0[];
+extern unsigned char mapLaser1PLN1[];
 
 /* End of LASER1.H */
