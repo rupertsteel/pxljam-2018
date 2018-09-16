@@ -8,7 +8,7 @@ UINT8 bank_SPRITE_DOOR = 2;
 
 #include "ZGBMain.h"
 
-const UINT8 anim[] = {4, 0, 1, 2, 3};
+static const UINT8 anim[] = {4, 0, 1, 2, 3};
 
 typedef struct DoorInfo {
 	INT8 target;

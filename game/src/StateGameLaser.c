@@ -7,6 +7,7 @@ UINT8 bank_STATE_GAME_LASER = 2;
 #include "../res/src/player.h"
 #include "../res/src/door.h"
 #include "../res/src/font.h"
+#include "../res/src/laser.h"
 
 #include "ZGBMain.h"
 #include "Scroll.h"
@@ -24,10 +25,10 @@ static const UINT16 sprites_palette[] = {
 	PALETTE_INDEX(player, 1),
 	PALETTE_INDEX(door,  2),
 	PALETTE_INDEX(player, 3),
-	PALETTE_INDEX(player, 4),
-	PALETTE_INDEX(player, 5),
-	PALETTE_INDEX(player, 6),
-	PALETTE_INDEX(player, 7),
+	PALETTE_INDEX(laserSprite, 4),
+	PALETTE_INDEX(laserSprite, 5),
+	PALETTE_INDEX(laserSprite, 6),
+	PALETTE_INDEX(laserSprite, 7),
 };
 
 static const UINT8 collision_tiles[] = {1, 2, 3, 0};
@@ -55,6 +56,8 @@ void Start_STATE_GAME_LASER() {
 	scroll_h_border = 2 << 3;
 	SHOW_WIN;
 	scroll_target = SpriteManagerAdd(SPRITE_PLAYER, 50, 50);
+
+	SpriteManagerAdd(SPRITE_LASER, 80, 50);
 
 	InitScrollTilesColor(0, 8, tiles, 3);
 	InitScroll(mapLaser1Width, mapLaser1Height, mapLaser1, collision_tiles, 0, 3);
