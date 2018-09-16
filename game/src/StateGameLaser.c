@@ -133,8 +133,6 @@ void Update_STATE_GAME_LASER() {
     UINT8 i;
     struct Sprite* spr;
 	UINT8 controllerControl = 0;
-	UINT8 i;
-	struct Sprite* spr;
 
 	SPRITEMANAGER_ITERATE(i, spr) {
 		if (spr->type == SPRITE_PLAYER) {
@@ -144,7 +142,6 @@ void Update_STATE_GAME_LASER() {
 			controllerControl = !data->hasControl;
 		}
 	}
-	struct DoorInfo* data;
 
 	if (controllerControl) {
 		if (KEY_TICKED(J_LEFT)) {
@@ -168,14 +165,12 @@ void Update_STATE_GAME_LASER() {
 		&& downSlot == laserFu) {
 		// puzzle completed, show the door
 		
-        SPRITEMANAGER_ITERATE(i, spr) {
-            if (spr->type == SPRITE_DOOR) {
-                if (CheckCollision(THIS, spr)) {
-    				data = (struct DoorInfo*)spr->custom_data;
-					data->opened = 1;
-                }
-            }
-        }
+		SPRITEMANAGER_ITERATE(i, spr) {
+			if (spr->type == SPRITE_DOOR) {
+				struct DoorInfo* data = (struct DoorInfo*)spr->custom_data;
+				data->opened = 1;
+			}
+		}
 
 	}
 }

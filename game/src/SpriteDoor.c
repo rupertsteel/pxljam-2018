@@ -17,6 +17,7 @@ void Start_SPRITE_DOOR() {
     UINT16 tileX;
     UINT16 tileY;
     struct DoorInfo* data;
+    UINT8 mapData;
 
     SetSpriteAnim(THIS, anim_static, 50);
 
@@ -24,8 +25,9 @@ void Start_SPRITE_DOOR() {
     tileY = (THIS->y >> 3) + 1;
 
     data = (struct DoorInfo*)THIS->custom_data;
-    data->target = getDataFromMap(tileX, tileY, 1);
-    data->opened = 0;
+    mapData = getDataFromMap(tileX, tileY, 1);
+    data->target = mapData & 127;
+    data->opened = !((mapData & 128) >> 7);
 
     THIS->coll_x = 0;
     THIS->coll_y = 0;

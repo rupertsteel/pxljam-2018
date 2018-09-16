@@ -8,6 +8,7 @@ UINT8 bank_SPRITE_PLAYER = 2;
 #include "Print.h"
 #include "SpritePlayer.h"
 #include "MapCommon.h"
+#include "SpriteDoor.h"
 
 const UINT8 anim_idle[] = {1, 0};
 const UINT8 anim_walk[] = {2, 1, 2};
@@ -82,8 +83,13 @@ void Update_SPRITE_PLAYER() {
             }
             if (spr->type == SPRITE_DOOR) {
                 if (CheckCollision(&tmp, spr)) {
-                    Printf("Door Locked!                   ");
-                    return;
+                    struct DoorInfo* data;
+                    data = (struct DoorInfo*)spr->custom_data;
+                    if (!data->opened) {
+                        Printf("Door Locked!                   ");
+                        return;
+                    }
+                    
                 }
             }
         }
