@@ -8,4 +8,5 @@ typedef struct LaserInfo {
     INT8 currentDirection;
     INT8 targetLaserState;
     INT8 currentLaserState;
+    INT8 animationSpeed;
 } LaserInfo;
