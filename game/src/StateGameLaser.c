@@ -19,6 +19,7 @@ UINT8 bank_STATE_GAME_LASER = 2;
 
 #include "MapCommon.h"
 #include "SpriteLaser.h"
+#include "SpritePlayer.h"
 
 static const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
 
@@ -129,18 +130,29 @@ static void swap_lasers(struct Sprite** a, struct Sprite** b) {
 
 void Update_STATE_GAME_LASER() {
 	UINT8 controllerControl = 0;
+	UINT8 i;
+	struct Sprite* spr;
+
+	SPRITEMANAGER_ITERATE(i, spr) {
+		if (spr->type == SPRITE_PLAYER) {
+			struct PlayerInfo* data;
+			data = (struct PlayerInfo*)spr->custom_data;
+			
+			controllerControl = !data->hasControl;
+		}
+	}
 
 	if (controllerControl) {
-		if (KEY_PRESSED(J_LEFT)) {
+		if (KEY_TICKED(J_LEFT)) {
 			swap_lasers(&leftSlot, &downSlot);
 			swap_lasers(&downSlot, &rightSlot);
-		} else if (KEY_PRESSED(J_RIGHT)) {
+		} else if (KEY_TICKED(J_RIGHT)) {
 			swap_lasers(&leftSlot, &downSlot);
 			swap_lasers(&downSlot, &rightSlot);
-		} else if (KEY_PRESSED(J_UP)) {
+		} else if (KEY_TICKED(J_UP)) {
 			swap_lasers(&leftSlot, &upSlot);
 			swap_lasers(&leftSlot, &downSlot);
-		} else if (KEY_PRESSED(J_DOWN)) {
+		} else if (KEY_TICKED(J_DOWN)) {
 			swap_lasers(&leftSlot, &downSlot);
 			swap_lasers(&leftSlot, &upSlot);
 		}
