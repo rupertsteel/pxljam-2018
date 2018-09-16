@@ -1,6 +1,6 @@
 /*
 
- MAP.H
+ LEVELSELECT.H
 
  Map Include File.
 
@@ -18,12 +18,12 @@
 
 */
 
-#define mapWidth 40
-#define mapHeight 18
-#define mapBank 0
+#define mapLevelSelectWidth 40
+#define mapLevelSelectHeight 18
+#define mapLevelSelectBank 0
 
-#define map mapPLN0
-extern unsigned char mapPLN0[];
-extern unsigned char mapPLN1[];
+#define mapLevelSelect mapLevelSelectPLN0
+extern unsigned char mapLevelSelectPLN0[];
+extern unsigned char mapLevelSelectPLN1[];
 
-/* End of MAP.H */
+/* End of LEVELSELECT.H */

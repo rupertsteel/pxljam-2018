@@ -3,7 +3,7 @@
 UINT8 bank_STATE_GAME = 2;
 
 #include "../res/src/tiles.h"
-#include "../res/src/map.h"
+#include "../res/src/levelSelect.h"
 #include "../res/src/player.h"
 #include "../res/src/door.h"
 #include "../res/src/font.h"
@@ -14,6 +14,8 @@ UINT8 bank_STATE_GAME = 2;
 #include "Palette.h"
 #include "Frame.h"
 #include "Print.h"
+
+#include "MapCommon.h"
 
 static const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
 
@@ -32,20 +34,10 @@ static const UINT8 collision_tiles[] = {1, 2, 3, 0};
 
 UINT8 i = 0;
 
-UINT16 currentMapWidth = 0;
-UINT16 currentMapHeight = 0;
-UINT8 currentMapBank = 0;
-unsigned char* currentMapPLN0 = 0;
-unsigned char* currentMapPLN1 = 0;
-
 void Start_STATE_GAME() {
 	UINT8 i;
 
-	currentMapWidth = mapWidth;
-	currentMapHeight = mapHeight;
-	currentMapBank = 3;
-	currentMapPLN0 = mapPLN0;
-	currentMapPLN1 = mapPLN1;
+	StartMap(mapLevelSelectWidth, mapLevelSelectHeight, 3, mapLevelSelectPLN0, mapLevelSelectPLN1);
 
 	SetPalette(BG_PALETTE, 0, 8, bg_palette, bank_STATE_GAME);
 	SetPalette(SPRITES_PALETTE, 0, 8, sprites_palette, bank_STATE_GAME);
@@ -67,7 +59,7 @@ void Start_STATE_GAME() {
 	scroll_target = SpriteManagerAdd(SPRITE_PLAYER, 50, 50);
 
 	InitScrollTilesColor(0, 8, tiles, 3);
-	InitScroll(mapWidth, mapHeight, map, collision_tiles, 0, 3);
+	InitScroll(mapLevelSelectWidth, mapLevelSelectHeight, mapLevelSelect, collision_tiles, 0, 3);
 	SHOW_BKG;
 	
 }
