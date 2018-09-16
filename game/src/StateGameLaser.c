@@ -79,6 +79,7 @@ void Start_STATE_GAME_LASER() {
 		info->targetLaserState = 1;
 		info->targetDirection = 0;
 		info->animationSpeed = 25;
+		SPRITE_SET_CGB_PALETTE(laserFl, 5);
 	}
 	{
 		struct LaserInfo* info;
@@ -88,6 +89,7 @@ void Start_STATE_GAME_LASER() {
 		info->targetLaserState = 1;
 		info->targetDirection = 1;
 		info->animationSpeed = 31;
+		SPRITE_SET_CGB_PALETTE(laserFu, 6);
 	}
 	{
 		struct LaserInfo* info;
@@ -97,6 +99,7 @@ void Start_STATE_GAME_LASER() {
 		info->targetLaserState = 1;
 		info->targetDirection = 2;
 		info->animationSpeed = 19;
+		SPRITE_SET_CGB_PALETTE(laserFr, 7);
 	}
 	{
 		struct LaserInfo* info;
@@ -106,6 +109,7 @@ void Start_STATE_GAME_LASER() {
 		info->targetLaserState = 1;
 		info->targetDirection = 3;
 		info->animationSpeed = 33;
+		SPRITE_SET_CGB_PALETTE(laserFd, 4);
 	}
 
 	InitScrollTilesColor(0, 8, tiles, 3);
