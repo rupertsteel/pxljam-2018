@@ -17,6 +17,7 @@ UINT8 bank_STATE_GAME_LASER = 2;
 #include "Frame.h"
 
 #include "MapCommon.h"
+#include "SpriteLaser.h"
 
 static const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
 
@@ -35,6 +36,7 @@ static const UINT8 collision_tiles[] = {1, 2, 3, 0};
 
 void Start_STATE_GAME_LASER() {
 	UINT8 i;
+	struct Sprite* addedLaserSprite;
 
 	StartMap(mapLaser1Width, mapLaser1Height, 3, mapLaser1PLN0, mapLaser1PLN1);
 
@@ -57,7 +59,12 @@ void Start_STATE_GAME_LASER() {
 	SHOW_WIN;
 	scroll_target = SpriteManagerAdd(SPRITE_PLAYER, 50, 50);
 
-	SpriteManagerAdd(SPRITE_LASER, 80, 50);
+	addedLaserSprite = SpriteManagerAdd(SPRITE_LASER, 80, 50);
+	{
+		struct LaserInfo* info = (struct LaserInfo*)addedLaserSprite->custom_data;
+		info->targetLaserState = 1;
+		info->targetDirection = 1;
+	}
 
 	InitScrollTilesColor(0, 8, tiles, 3);
 	InitScroll(mapLaser1Width, mapLaser1Height, mapLaser1, collision_tiles, 0, 3);
