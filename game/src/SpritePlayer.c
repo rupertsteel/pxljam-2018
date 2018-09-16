@@ -80,6 +80,12 @@ void Update_SPRITE_PLAYER() {
                     return;
                 }
             }
+            if (spr->type == SPRITE_DOOR) {
+                if (CheckCollision(&tmp, spr)) {
+                    Printf("Door Locked!                   ");
+                    return;
+                }
+            }
         }
         info->near = 0;
         Printf("                                                          ");
