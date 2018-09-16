@@ -69,7 +69,6 @@ void Update_STATE_GAME() {
 	struct Sprite* spr;
 
 	PRINT_POS(0, 1);
-	Printf("%d out of %d      ", (UINT16)(i++),1);
 
 	// DEBUG ZONE
 	/*SPRITEMANAGER_ITERATE(i, spr) {

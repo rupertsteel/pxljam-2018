@@ -24,7 +24,7 @@ void Start_SPRITE_CONTROLLER() {
     THIS->coll_x = 0;
     THIS->coll_y = 0;
     THIS->coll_w = 16;
-    THIS->coll_h = 1;
+    THIS->coll_h = 7;
 }
 
 void Update_SPRITE_CONTROLLER() {
