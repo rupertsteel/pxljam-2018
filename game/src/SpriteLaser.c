@@ -35,6 +35,9 @@ void Start_SPRITE_LASER() {
     info->targetLaserState = 0;
     info->currentLaserState = 0;
 
+    THIS->lim_x = 1000;
+    THIS->lim_y = 1000;
+
     SPRITE_SET_CGB_PALETTE(THIS, 4);
 }
 
