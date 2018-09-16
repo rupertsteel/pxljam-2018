@@ -72,8 +72,8 @@ void Start_STATE_GAME_LASER() {
 
 	{
 		struct LaserInfo* info;
-		laserFl = SpriteManagerAdd(SPRITE_LASER, 100, 50);
-		rightSlot = laserFl;
+		laserFl = SpriteManagerAdd(SPRITE_LASER, 92, 42); // 100 50
+		upSlot = laserFl;
 		info = (struct LaserInfo*)laserFl->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 0;
@@ -90,8 +90,8 @@ void Start_STATE_GAME_LASER() {
 	}
 	{
 		struct LaserInfo* info;
-		laserFr = SpriteManagerAdd(SPRITE_LASER, 84, 50);
-		leftSlot = laserFr;
+		laserFr = SpriteManagerAdd(SPRITE_LASER, 100, 50); // 84 50
+		rightSlot = laserFr;
 		info = (struct LaserInfo*)laserFr->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 2;
@@ -99,8 +99,8 @@ void Start_STATE_GAME_LASER() {
 	}
 	{
 		struct LaserInfo* info;
-		laserFd = SpriteManagerAdd(SPRITE_LASER, 92, 42);
-		upSlot = laserFd;
+		laserFd = SpriteManagerAdd(SPRITE_LASER, 84, 50); // 92 42
+		leftSlot = laserFd;
 		info = (struct LaserInfo*)laserFd->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 3;
