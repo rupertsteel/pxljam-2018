@@ -68,7 +68,7 @@ void Update_SPRITE_LASER() {
         case 6: animationData = fdrStaticAnim; break;
         case 7: animationData = fdlStaticAnim; break;
         }
-        SetSpriteAnim(THIS, animationData, 25);
+        SetSpriteAnim(THIS, animationData, info->animationSpeed);
     } else if (animationUpdateNeeded) {
         const UINT8* animationData;
         switch (info->targetDirection) {
@@ -81,7 +81,7 @@ void Update_SPRITE_LASER() {
         case 6: animationData = fdrAnim; break;
         case 7: animationData = fdlAnim; break;
         }
-        SetSpriteAnim(THIS, animationData, 25);
+        SetSpriteAnim(THIS, animationData, info->animationSpeed);
     }
 }
 
