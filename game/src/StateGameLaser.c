@@ -34,9 +34,13 @@ static const UINT16 sprites_palette[] = {
 
 static const UINT8 collision_tiles[] = {1, 2, 3, 0};
 
+static struct Sprite* laserFl;
+static struct Sprite* laserFu;
+static struct Sprite* laserFr;
+static struct Sprite* laserFd;
+
 void Start_STATE_GAME_LASER() {
 	UINT8 i;
-	struct Sprite* addedLaserSprite;
 
 	StartMap(mapLaser1Width, mapLaser1Height, 3, mapLaser1PLN0, mapLaser1PLN1);
 
@@ -59,11 +63,33 @@ void Start_STATE_GAME_LASER() {
 	SHOW_WIN;
 	scroll_target = SpriteManagerAdd(SPRITE_PLAYER, 50, 50);
 
-	addedLaserSprite = SpriteManagerAdd(SPRITE_LASER, 80, 50);
 	{
-		struct LaserInfo* info = (struct LaserInfo*)addedLaserSprite->custom_data;
+		struct LaserInfo* info;
+		laserFl = SpriteManagerAdd(SPRITE_LASER, 80, 50);
+		info = (struct LaserInfo*)laserFl->custom_data;
+		info->targetLaserState = 1;
+		info->targetDirection = 0;
+	}
+	{
+		struct LaserInfo* info;
+		laserFu = SpriteManagerAdd(SPRITE_LASER, 80, 51);
+		info = (struct LaserInfo*)laserFu->custom_data;
 		info->targetLaserState = 1;
 		info->targetDirection = 1;
+	}
+	{
+		struct LaserInfo* info;
+		laserFr = SpriteManagerAdd(SPRITE_LASER, 80, 52);
+		info = (struct LaserInfo*)laserFr->custom_data;
+		info->targetLaserState = 1;
+		info->targetDirection = 2;
+	}
+	{
+		struct LaserInfo* info;
+		laserFd = SpriteManagerAdd(SPRITE_LASER, 80, 53);
+		info = (struct LaserInfo*)laserFd->custom_data;
+		info->targetLaserState = 1;
+		info->targetDirection = 3;
 	}
 
 	InitScrollTilesColor(0, 8, tiles, 3);
