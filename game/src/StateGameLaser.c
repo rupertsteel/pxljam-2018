@@ -20,6 +20,7 @@ UINT8 bank_STATE_GAME_LASER = 2;
 #include "MapCommon.h"
 #include "SpriteLaser.h"
 #include "SpritePlayer.h"
+#include "SpriteDoor.h"
 
 static const UINT16 bg_palette[] = {PALETTE_FROM_HEADER(tiles)};
 
@@ -129,6 +130,8 @@ static void swap_lasers(struct Sprite** a, struct Sprite** b) {
 }
 
 void Update_STATE_GAME_LASER() {
+    UINT8 i;
+    struct Sprite* spr;
 	UINT8 controllerControl = 0;
 	UINT8 i;
 	struct Sprite* spr;
@@ -141,6 +144,7 @@ void Update_STATE_GAME_LASER() {
 			controllerControl = !data->hasControl;
 		}
 	}
+	struct DoorInfo* data;
 
 	if (controllerControl) {
 		if (KEY_TICKED(J_LEFT)) {
@@ -163,7 +167,15 @@ void Update_STATE_GAME_LASER() {
 		&& rightSlot == laserFl
 		&& downSlot == laserFu) {
 		// puzzle completed, show the door
-
+		
+        SPRITEMANAGER_ITERATE(i, spr) {
+            if (spr->type == SPRITE_DOOR) {
+                if (CheckCollision(THIS, spr)) {
+    				data = (struct DoorInfo*)spr->custom_data;
+					data->opened = 1;
+                }
+            }
+        }
 
 	}
 }

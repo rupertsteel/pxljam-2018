@@ -7,25 +7,25 @@ UINT8 bank_SPRITE_DOOR = 2;
 #include "MapCommon.h"
 
 #include "ZGBMain.h"
+#include "Print.h"
+#include "SpriteDoor.h"
 
 static const UINT8 anim[] = {4, 0, 1, 2, 3};
-
-typedef struct DoorInfo {
-	INT8 target;
-} DoorInfo;
+static const UINT8 anim_static[] = {1, 0};
 
 void Start_SPRITE_DOOR() {
     UINT16 tileX;
     UINT16 tileY;
     struct DoorInfo* data;
 
-    SetSpriteAnim(THIS, anim, 50);
+    SetSpriteAnim(THIS, anim_static, 50);
 
     tileX = THIS->x >> 3;
     tileY = (THIS->y >> 3) + 1;
 
     data = (struct DoorInfo*)THIS->custom_data;
     data->target = getDataFromMap(tileX, tileY, 1);
+    data->opened = 0;
 
     THIS->coll_x = 0;
     THIS->coll_y = 0;
@@ -36,15 +36,18 @@ void Start_SPRITE_DOOR() {
 void Update_SPRITE_DOOR() {
     UINT8 i;
     struct Sprite* spr;
-
-    SPRITEMANAGER_ITERATE(i, spr) {
-        if (spr->type == SPRITE_PLAYER) {
-            if (CheckCollision(THIS, spr)) {
-                struct DoorInfo* data;
-                data = (struct DoorInfo*)THIS->custom_data;
-                SetState(data->target);
+    struct DoorInfo* info = (struct DoorInfo*)THIS->custom_data;
+    if (info->opened) {
+        SPRITEMANAGER_ITERATE(i, spr) {
+            if (spr->type == SPRITE_PLAYER) {
+                if (CheckCollision(THIS, spr)) {
+                    SetState(info->target);
+                }
             }
         }
+        SetSpriteAnim(THIS, anim, 50);
+    } else {
+        SetSpriteAnim(THIS, anim_static, 50);
     }
 }
 
