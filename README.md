@@ -1,6 +1,8 @@
 
 # PxlJam 2018
 
+![screenshot](screenshot.png)
+
 ## About
 
 This is a game for the Game Boy Color made by Rupert Steel and Sanjay Govind at the 2018 PlxJam game jam.
