@@ -8,11 +8,16 @@
 This is a game for the Game Boy Color made by Rupert Steel and Sanjay Govind at the 2018 PlxJam game jam.
 
 We decided on making a game for the Game Boy Color as a challenge.
-To increase the difficulty of this challenge, we also decided to only lookup information for developing Game Boy Color games less than 3 hours before starting the jam.
 
-The theme of the jam was announced when the jam started and was 'To the point'
+The theme of this jam was 'To the point'
+
+This is only a very basic game with one puzzle level. We were planning on implementing more, but due to time constraints and not wanting to go without sleep we weren't able to.
+
+## Timeline
 
 ### Day 1
+
+To increase the difficulty of this challenge, we also decided to only lookup information for developing Game Boy Color games less than 3 hours before starting the jam.
 
 When the jam started we spent about an hour and a half trying to think of ideas of a game to match the theme. We could think of many ideas, but none of our initial ones could easily be implemented on a Game Boy Color.
 
